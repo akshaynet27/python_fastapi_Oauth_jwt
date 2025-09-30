@@ -42,5 +42,6 @@ def get_current_user(token: str = Depends(outh2_scheme)):
         if name is None:
             raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Could not validate credentials")
         token_data = TokenData(name=name)
+        return token_data
     except jwt.JWTError:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Could not validate credentials")
